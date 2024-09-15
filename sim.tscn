@@ -1,0 +1,878 @@
+[gd_scene load_steps=22 format=3 uid="uid://koe8xvlrv6cr"]
+
+[ext_resource type="Script" path="res://sim.gd" id="1_5ish8"]
+[ext_resource type="Texture2D" uid="uid://dia0466gnlve7" path="res://assets/pixil-frame-0.png" id="1_8l736"]
+[ext_resource type="Texture2D" uid="uid://b42m78n24cgfl" path="res://assets/pixil-frame-0 (5).png" id="2_gc44h"]
+[ext_resource type="Texture2D" uid="uid://cn8rm6yxelwgc" path="res://assets/pixil-frame-0 (3).png" id="3_hkrnf"]
+[ext_resource type="Texture2D" uid="uid://gar82hcojxeq" path="res://assets/pixil-frame-0 (2).png" id="4_ynlih"]
+[ext_resource type="Texture2D" uid="uid://jrp4ra22jiys" path="res://assets/pixil-frame-0 (4).png" id="5_74ue3"]
+[ext_resource type="Texture2D" uid="uid://onpfj01lete" path="res://pixil-frame-0 (8).png" id="7_0gnwi"]
+
+[sub_resource type="Animation" id="Animation_w0ina"]
+resource_name = "new_animation"
+length = 0.12
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_ynlih"), ExtResource("3_hkrnf"), ExtResource("5_74ue3")]
+}
+
+[sub_resource type="Animation" id="Animation_ppvau"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shg0n"]
+_data = {
+"RESET": SubResource("Animation_ppvau"),
+"new_animation": SubResource("Animation_w0ina")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t0fes"]
+friction = 0.0
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t45mj"]
+radius = 5.09902
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dis50"]
+size = Vector2(11.1594, 1.38725)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjwn6"]
+size = Vector2(4.27537, 0.867958)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyl2s"]
+size = Vector2(3.18839, 1.14243)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6ggb"]
+size = Vector2(7.75, 3.49999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8yfm"]
+size = Vector2(2.02898, 0.845694)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxp5q"]
+size = Vector2(1.0145, 1.2908)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq8cr"]
+size = Vector2(0.942032, 9.19883)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wjtb"]
+size = Vector2(1.30434, 3.17507)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iawta"]
+size = Vector2(1.01448, 2.5816)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5ish8")
+
+[node name="VSlider" type="VSlider" parent="."]
+physics_interpolation_mode = 1
+top_level = true
+offset_left = 921.0
+offset_top = 3.0
+offset_right = 1152.0
+offset_bottom = 509.0
+min_value = -100.0
+value = -100.0
+tick_count = 9
+ticks_on_borders = true
+
+[node name="TextEdit" type="TextEdit" parent="VSlider"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 532.0
+offset_right = 206.0
+offset_bottom = 625.0
+text = "0"
+
+[node name="spirtovka" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(554, 444)
+scale = Vector2(4.34, 2.855)
+texture = ExtResource("3_hkrnf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="spirtovka"]
+libraries = {
+"": SubResource("AnimationLibrary_shg0n")
+}
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(529, 310)
+scale = Vector2(3.45, 3.37)
+lock_rotation = true
+freeze = true
+
+[node name="Pixil-frame-0" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(0.289855, 2.07714)
+scale = Vector2(1, 1)
+texture = ExtResource("1_8l736")
+
+[node name="atom" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-6.08696, 18.3976)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom"]
+position = Vector2(23, -16)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom/CollisionShape2D"]
+position = Vector2(1, 2)
+texture = ExtResource("2_gc44h")
+
+[node name="atom2" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(0.86956, 7.12165)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom2"]
+position = Vector2(33, 7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom2/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom3" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-3.47826, -0.593482)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom3"]
+position = Vector2(31, 2)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom3/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom4" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-4.92753, 11.8694)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom4"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom4/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom5" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-15.0725, 14.2433)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom5"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom5/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom6" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-15.6522, -2.37389)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom6"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom6/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom7" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-21.7391, -2.07715)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom7"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom7/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom8" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-10.1449, -1.48369)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom8"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom8/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom9" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(7.24638, -1.78042)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom9"]
+position = Vector2(36.82, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom9/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom10" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(2.89856, -1.48369)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom10"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom10/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom11" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-1.15942, -1.48369)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom11"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom11/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom12" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-5.21739, -1.78043)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom12"]
+position = Vector2(38, -6.065)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom12/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom13" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-10.4348, 1.48368)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom13"]
+position = Vector2(38, -2.645)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom13/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom14" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-10.1449, 12.4629)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom14"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom14/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom15" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-4.63768, 15.727)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom15"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom15/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom16" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-0.86956, 15.727)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom16"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom16/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom17" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(2.31885, 13.9466)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom17"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom17/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom18" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(6.95653, 14.2433)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom18"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom18/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom19" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(8.11595, 10.6825)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom19"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom19/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom20" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(8.11595, 6.52818)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom20"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom20/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom21" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(7.24638, 2.07714)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom21"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom21/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom22" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(3.47827, 10.3857)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom22"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom22/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom23" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(3.76812, 6.52818)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom23"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom23/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom24" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-0.86956, 6.52818)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom24"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom24/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom25" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-10.4348, 9.49554)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom25"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom25/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom26" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-11.3043, 5.93471)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom26"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom26/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom27" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-15.6522, 9.49554)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom27"]
+position = Vector2(38, -5)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom27/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom28" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-15.6522, 5.93471)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom28"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom28/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom29" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-15.6522, 2.07714)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom29"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom29/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom30" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-22.029, 13.6498)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom30"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom30/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom31" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-21.7391, 9.79227)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom31"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom31/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom32" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-21.7391, 5.63797)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom32"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom32/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom33" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-21.7391, 1.48367)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom33"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom33/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom34" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-5.21739, 5.93471)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom34"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom34/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom35" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(-1.73913, 1.7804)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom35"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom35/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="atom36" type="RigidBody2D" parent="RigidBody2D/Pixil-frame-0"]
+position = Vector2(2.31885, 2.37388)
+scale = Vector2(0.289855, 0.296736)
+physics_material_override = SubResource("PhysicsMaterial_t0fes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Pixil-frame-0/atom36"]
+position = Vector2(38, -7)
+shape = SubResource("CircleShape2D_t45mj")
+
+[node name="Pixil-frame-0(5)12" type="Sprite2D" parent="RigidBody2D/Pixil-frame-0/atom36/CollisionShape2D"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gc44h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(2.6087, 24.6291)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_dis50")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(10.4348, 23.4421)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wjwn6")
+
+[node name="CollisionShape2D48" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(10.1449, -16.914)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wjwn6")
+
+[node name="CollisionShape2D49" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-5.2174, -16.6172)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wjwn6")
+
+[node name="CollisionShape2D50" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-8.9855, -15.727)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wjwn6")
+
+[node name="CollisionShape2D51" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(13.913, -15.4303)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wjwn6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-4.92753, 23.4421)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wjwn6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-8.11595, 22.8264)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qyl2s")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(13.913, 22.8486)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qyl2s")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-10.6884, 21.8843)
+scale = Vector2(0.289855, 0.296736)
+shape = SubResource("RectangleShape2D_w6ggb")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(16.3768, 21.9584)
+scale = Vector2(0.289855, 0.296736)
+shape = SubResource("RectangleShape2D_w6ggb")
+
+[node name="CollisionShape2D52" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(18.2609, -13.3531)
+scale = Vector2(0.289855, 0.296736)
+shape = SubResource("RectangleShape2D_w6ggb")
+
+[node name="CollisionShape2D53" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(16.2319, -14.2433)
+scale = Vector2(0.289855, 0.296736)
+shape = SubResource("RectangleShape2D_w6ggb")
+
+[node name="CollisionShape2D54" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-10.7246, -14.8368)
+scale = Vector2(0.289855, 0.296736)
+shape = SubResource("RectangleShape2D_w6ggb")
+
+[node name="CollisionShape2D55" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-12.7536, -13.6499)
+scale = Vector2(0.289855, 0.296736)
+shape = SubResource("RectangleShape2D_w6ggb")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-12.8985, 20.8976)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_d8yfm")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(18.4058, 20.7715)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_d8yfm")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-14.2029, 19.8813)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-15.0725, 18.9911)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-15.942, 17.5074)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-17.1014, 16.6172)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-18.2609, 15.727)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-19.1304, 14.5401)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D23" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-20.8696, 11.5727)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-21.1594, -5.04452)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-19.1304, -8.01188)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-18.2609, -8.90209)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-17.3913, -9.7923)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D28" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-16.2319, -10.6825)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D29" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-15.0725, -11.8694)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D30" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-14.2029, -12.7597)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D31" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(19.7101, -12.4629)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D32" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(20.8696, -11.5727)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D33" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(21.7391, -10.3858)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D34" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(22.8985, -9.19882)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D35" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(23.7681, -8.60535)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D36" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(24.6377, -7.4184)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D37" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(26.6667, -4.45105)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(19.8551, 19.8813)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(21.7391, 17.5074)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(22.6087, 16.3205)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(23.7681, 15.4303)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(24.6377, 14.54)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(26.6667, 11.5727)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(20.8696, 18.3976)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uxp5q")
+
+[node name="CollisionShape2D38" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(28.8044, 3.70918)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_lq8cr")
+
+[node name="CollisionShape2D40" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-22.029, 9.79228)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3wjtb")
+
+[node name="CollisionShape2D41" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-22.3188, -2.96738)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3wjtb")
+
+[node name="CollisionShape2D42" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(27.8261, 9.79227)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3wjtb")
+
+[node name="CollisionShape2D43" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(27.8261, -2.3739)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3wjtb")
+
+[node name="CollisionShape2D39" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-23.1884, 3.56082)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_lq8cr")
+
+[node name="CollisionShape2D44" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(25.7971, 13.3531)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_iawta")
+
+[node name="CollisionShape2D45" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(25.7971, -5.93472)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_iawta")
+
+[node name="CollisionShape2D46" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-20.2898, -6.5282)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_iawta")
+
+[node name="CollisionShape2D47" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-20.2899, 13.3531)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_iawta")
+
+[node name="Pixil-frame-0(8)" type="Sprite2D" parent="."]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(576, 318)
+scale = Vector2(1.152, 0.664)
+texture = ExtResource("7_0gnwi")
+
+[connection signal="value_changed" from="VSlider" to="." method="_on_v_slider_value_changed"]
+[connection signal="sleeping_state_changed" from="RigidBody2D" to="RigidBody2D/Pixil-frame-0/atom36" method="_on_rigid_body_2d_sleeping_state_changed"]
